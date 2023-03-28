@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,10 +46,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,14 +129,207 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Shipper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\css\bootstrap-responsive.css" />
+    <Content Include="Areas\Admin\Content\css\bootstrap-responsive.min.css" />
+    <Content Include="Areas\Admin\Content\css\bootstrap.css" />
+    <Content Include="Areas\Admin\Content\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\css\chosen.css" />
+    <Content Include="Areas\Admin\Content\css\elfinder.min.css" />
+    <Content Include="Areas\Admin\Content\css\elfinder.theme.css" />
+    <Content Include="Areas\Admin\Content\css\font-awesome-ie7.min.css" />
+    <Content Include="Areas\Admin\Content\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Content\css\fullcalendar.css" />
+    <Content Include="Areas\Admin\Content\css\glyphicons.css" />
+    <Content Include="Areas\Admin\Content\css\halflings.css" />
+    <Content Include="Areas\Admin\Content\css\ie.css" />
+    <Content Include="Areas\Admin\Content\css\ie9.css" />
+    <Content Include="Areas\Admin\Content\css\jquery-ui-1.8.21.custom.css" />
+    <Content Include="Areas\Admin\Content\css\jquery.cleditor.css" />
+    <Content Include="Areas\Admin\Content\css\jquery.gritter.css" />
+    <Content Include="Areas\Admin\Content\css\jquery.iphone.toggle.css" />
+    <Content Include="Areas\Admin\Content\css\jquery.noty.css" />
+    <Content Include="Areas\Admin\Content\css\noty_theme_default.css" />
+    <Content Include="Areas\Admin\Content\css\style-forms.css" />
+    <Content Include="Areas\Admin\Content\css\style-responsive.css" />
+    <Content Include="Areas\Admin\Content\css\style.css" />
+    <Content Include="Areas\Admin\Content\css\uniform.default.css" />
+    <Content Include="Areas\Admin\Content\css\uploadify.css" />
+    <Content Include="Areas\Admin\Content\font\glyphicons-regular.svg" />
+    <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.svg" />
+    <Content Include="Areas\Admin\Content\img\arrows-active.png" />
+    <Content Include="Areas\Admin\Content\img\arrows-normal.png" />
+    <Content Include="Areas\Admin\Content\img\avatar.jpg" />
+    <Content Include="Areas\Admin\Content\img\bg-input-focus.png" />
+    <Content Include="Areas\Admin\Content\img\bg-input.png" />
+    <Content Include="Areas\Admin\Content\img\bg-login.jpg" />
+    <Content Include="Areas\Admin\Content\img\browser-chrome-big.png" />
+    <Content Include="Areas\Admin\Content\img\browser-firefox-big.png" />
+    <Content Include="Areas\Admin\Content\img\browser-ie.png" />
+    <Content Include="Areas\Admin\Content\img\browser-opera.png" />
+    <Content Include="Areas\Admin\Content\img\browser-safari.png" />
+    <Content Include="Areas\Admin\Content\img\buttons.gif" />
+    <Content Include="Areas\Admin\Content\img\chat-left%402x.png" />
+    <Content Include="Areas\Admin\Content\img\chat-left-metro%402x.png" />
+    <Content Include="Areas\Admin\Content\img\chat-left-metro.png" />
+    <Content Include="Areas\Admin\Content\img\chat-left.png" />
+    <Content Include="Areas\Admin\Content\img\chat-right%402x.png" />
+    <Content Include="Areas\Admin\Content\img\chat-right-metro%402x.png" />
+    <Content Include="Areas\Admin\Content\img\chat-right-metro.png" />
+    <Content Include="Areas\Admin\Content\img\chat-right.png" />
+    <Content Include="Areas\Admin\Content\img\chosen-sprite.png" />
+    <Content Include="Areas\Admin\Content\img\close-button-white.png" />
+    <Content Include="Areas\Admin\Content\img\close-button.png" />
+    <Content Include="Areas\Admin\Content\img\crop.gif" />
+    <Content Include="Areas\Admin\Content\img\dialogs.png" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo1.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo10.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo11.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo12.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo13.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo2.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo3.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo4.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo5.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo6.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo7.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo8.jpg" />
+    <Content Include="Areas\Admin\Content\img\gallery\photo9.jpg" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-halflings.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-white.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons-white.svg" />
+    <Content Include="Areas\Admin\Content\img\glyphicons.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons.svg" />
+    <Content Include="Areas\Admin\Content\img\glyphicons_halflings-white.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons_halflings-white.svg" />
+    <Content Include="Areas\Admin\Content\img\glyphicons_halflings.png" />
+    <Content Include="Areas\Admin\Content\img\glyphicons_halflings.svg" />
+    <Content Include="Areas\Admin\Content\img\icons-big.png" />
+    <Content Include="Areas\Admin\Content\img\icons-small.png" />
+    <Content Include="Areas\Admin\Content\img\Icon\AddIcon.png" />
+    <Content Include="Areas\Admin\Content\img\Icon\DeleteIcon.png" />
+    <Content Include="Areas\Admin\Content\img\Icon\EditIcon.png" />
+    <Content Include="Areas\Admin\Content\img\iphone-style-checkboxes\off-63584.png" />
+    <Content Include="Areas\Admin\Content\img\iphone-style-checkboxes\on-63584.png" />
+    <Content Include="Areas\Admin\Content\img\iphone-style-checkboxes\slider_center-63584.png" />
+    <Content Include="Areas\Admin\Content\img\iphone-style-checkboxes\slider_left-63584.png" />
+    <Content Include="Areas\Admin\Content\img\iphone-style-checkboxes\slider_right-63584.png" />
+    <Content Include="Areas\Admin\Content\img\progress.gif" />
+    <Content Include="Areas\Admin\Content\img\quicklook-bg.png" />
+    <Content Include="Areas\Admin\Content\img\quicklook-icons.png" />
+    <Content Include="Areas\Admin\Content\img\quote.png" />
+    <Content Include="Areas\Admin\Content\img\resize.png" />
+    <Content Include="Areas\Admin\Content\img\slider_r8.png" />
+    <Content Include="Areas\Admin\Content\img\spinner-mini.gif" />
+    <Content Include="Areas\Admin\Content\img\sprite.png" />
+    <Content Include="Areas\Admin\Content\img\timeline-bg.png" />
+    <Content Include="Areas\Admin\Content\img\timeline-left-arrow%402x.png" />
+    <Content Include="Areas\Admin\Content\img\timeline-left-arrow.png" />
+    <Content Include="Areas\Admin\Content\img\timeline-right-arrow%402x.png" />
+    <Content Include="Areas\Admin\Content\img\timeline-right-arrow.png" />
+    <Content Include="Areas\Admin\Content\img\toolbar.gif" />
+    <Content Include="Areas\Admin\Content\img\toolbar.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Areas\Admin\Content\img\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_222222_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_454545_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_888888_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Areas\Admin\Content\img\uploadify-cancel.png" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Content\js\counter.js" />
+    <Content Include="Areas\Admin\Content\js\custom.js" />
+    <Content Include="Areas\Admin\Content\js\excanvas.js" />
+    <Content Include="Areas\Admin\Content\js\fullcalendar.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-1.9.1.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-migrate-1.0.0.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-ui-1.10.0.custom.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.chosen.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.cleditor.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.cookie.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.elfinder.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.pie.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.resize.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.stack.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.gritter.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.imagesloaded.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.iphone.toggle.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.knob.modified.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.masonry.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.noty.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.raty.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.sparkline.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.ui.touch-punch.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.uniform.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.uploadify-3.1.min.js" />
+    <Content Include="Areas\Admin\Content\js\modernizr.js" />
+    <Content Include="Areas\Admin\Content\js\retina.js" />
+    <Content Include="Areas\Admin\Content\login\banner.jpg" />
+    <Content Include="Areas\Admin\Content\login\banner1.jpg" />
+    <Content Include="Areas\Admin\Content\login\style.css" />
+    <Content Include="Areas\Admin\Content\login\user.png" />
     <Content Include="Content\assets\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Content\assets\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Content\assets\bootstrap\css\bootstrap-reboot.css" />
@@ -202,6 +404,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\bootstrap\css\bootstrap-grid.css.map" />
@@ -249,6 +461,29 @@
     <Content Include="Content\assets\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\assets\webfonts\fa-solid-900.woff" />
     <Content Include="Content\assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Content\font\fontawesome-webfont-0.eot" />
+    <Content Include="Areas\Admin\Content\font\fontawesome-webfont-62877.eot" />
+    <Content Include="Areas\Admin\Content\font\fontawesome-webfont-62877.ttf" />
+    <Content Include="Areas\Admin\Content\font\fontawesome-webfont-62877.woff" />
+    <Content Include="Areas\Admin\Content\font\glyphicons-regular-0.eot" />
+    <Content Include="Areas\Admin\Content\font\glyphicons-regular.eot" />
+    <Content Include="Areas\Admin\Content\font\glyphicons-regular.ttf" />
+    <Content Include="Areas\Admin\Content\font\glyphicons-regular.woff" />
+    <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular-0.eot" />
+    <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.eot" />
+    <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.ttf" />
+    <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.woff" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -279,7 +514,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -293,6 +528,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -327,7 +565,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
