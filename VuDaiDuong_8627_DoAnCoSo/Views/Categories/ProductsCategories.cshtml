@@ -1,0 +1,161 @@
+﻿@model PagedList.IPagedList<VuDaiDuong_8627_DoAnCoSo.Models.Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ProductsCategories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function AddToCart(id_pr) {
+        var model = {};
+        model.id = id_pr;
+        model.Quantity = 1;
+        $.ajax({
+            type: "POST",
+            url: "/Cart/AddToCart",
+            data: JSON.stringify(model),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                alert("Thêm vào giỏ hàng thành công!");
+                var cartCount = parseInt($('#CartCount').text()) || 0;
+                $('#CartCount').text(cartCount + 1);
+            },
+            error: function () {
+                alert("Lỗi trong khi thêm vào giỏ hàng!");
+            }
+        });
+        return false;
+
+    }
+</script>
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="/Content//Content/assets/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- logo -->
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item">
+                                <a href="@Url.Action("Index","Home")">Home</a>
+
+                            </li>
+                            <li><a href="@Url.Action("About","Home")">About</a></li>
+
+
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            <li>
+                                <a href="@Url.Action("Index","Shop")">Shop</a>
+
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search arewa -->
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Apple Store</p>
+                    <h1>Shop</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">All</li>
+                        @Html.Action("Categories", "Categories")
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row product-lists">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 text-center strawberry">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="@Url.Action("DetailPro","Shop", new { id = item.IdProduct})"><img src="@Url.Content("~/Images/"+item.Image)" alt=""></a>
+                        </div>
+                        <div>
+                            <div class="featured__item__text">
+                                <h6></h6>
+
+
+                            </div>
+                        </div>
+                        <h3>@item.Name </h3>
+                        <p class="product-price"><span></span>@item.Price.ToString("N0") VND</p>
+                        <a onclick="AddToCart(@item.IdProduct)" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul style="display: inline-block">
+                        @Html.PagedListPager(Model, page => Url.Action("ProductsCategories", new { page }))
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

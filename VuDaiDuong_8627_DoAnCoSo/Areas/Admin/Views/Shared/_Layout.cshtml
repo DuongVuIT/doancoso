@@ -9,7 +9,7 @@
 
     <!-- start: Meta -->
     <meta charset="utf-8">
-    <title>Trang Quản Trị</title>
+    <title>Admin</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
     <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
@@ -60,7 +60,7 @@
 
                         <li class="dropdown">
                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="halflings-icon white user"></i> @Session["ten"]
+                                <i class="halflings-icon white user"></i> @Session["FullName"]
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -86,10 +86,10 @@
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
 
-                        <li><a href="@Url.Action("Index", "Categories")"><i class="icon-envelope"></i><span class="hidden-tablet">Category</span></a></li>
-                        <li><a href="@Url.Action("Index", "Products")"><i class="icon-envelope"></i><span class="hidden-tablet">Product</span></a></li>
+                        <li><a href="@Url.Action("Index", "Category")"><i class="icon-envelope"></i><span class="hidden-tablet">Category</span></a></li>
+                        <li><a href="@Url.Action("Index", "Product")"><i class="icon-envelope"></i><span class="hidden-tablet">Product</span></a></li>
                         <li><a href="@Url.Action("Index", "Order")"><i class="icon-envelope"></i><span class="hidden-tablet">Order</span></a></li>
-                        <li><a href="@Url.Action("Index", "User")"><i class="icon-lock"></i><span class="hidden-tablet">User</span></a></li>
+                        <li><a href="@Url.Action("Index", "User")"><i class="icon-envelope"></i><span class="hidden-tablet">User</span></a></li>
                     </ul>
                 </div>
             </div>

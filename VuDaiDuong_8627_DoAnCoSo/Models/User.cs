@@ -26,7 +26,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public string FullName { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
-        public string DiaChi { get; set; }
+        public string Address { get; set; }
         public int IdRole { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

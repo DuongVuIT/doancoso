@@ -1,0 +1,9 @@
+﻿@using VuDaiDuong_8627_DoAnCoSo.Models;
+@model List<Category>
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("ProductsCategories", new { id = item.IdCategory})">@item.CategoryName</a></li>
+}
+
+

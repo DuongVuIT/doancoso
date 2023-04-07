@@ -24,7 +24,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public string Name { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
-        public string DiaChi { get; set; }
+        public string Address { get; set; }
         public string Des { get; set; }
         public System.DateTime Date { get; set; }
         public double Total { get; set; }

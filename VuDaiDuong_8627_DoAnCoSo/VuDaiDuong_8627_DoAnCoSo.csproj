@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,6 +137,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
@@ -351,9 +360,13 @@
     <Content Include="Content\assets\img\1.jpg" />
     <Content Include="Content\assets\img\a.jpg" />
     <Content Include="Content\assets\img\abt.jpg" />
+    <Content Include="Content\assets\img\anhgioithieu.jpg" />
+    <Content Include="Content\assets\img\anhnenvideo.jpg" />
+    <Content Include="Content\assets\img\AppleWatchSeries5.jpg" />
     <Content Include="Content\assets\img\avaters\avatar1.png" />
     <Content Include="Content\assets\img\avaters\avatar2.png" />
     <Content Include="Content\assets\img\avaters\avatar3.png" />
+    <Content Include="Content\assets\img\banner.jpg" />
     <Content Include="Content\assets\img\breadcrumb-bg.jpg" />
     <Content Include="Content\assets\img\company-logos\1.png" />
     <Content Include="Content\assets\img\company-logos\2.png" />
@@ -367,6 +380,7 @@
     <Content Include="Content\assets\img\hero-bg-3.jpg" />
     <Content Include="Content\assets\img\hero-bg.jpg" />
     <Content Include="Content\assets\img\homepage-bg-pattern.png" />
+    <Content Include="Content\assets\img\iPhone13.jpg" />
     <Content Include="Content\assets\img\latest-news\news-bg-1.jpg" />
     <Content Include="Content\assets\img\latest-news\news-bg-2.jpg" />
     <Content Include="Content\assets\img\latest-news\news-bg-3.jpg" />
@@ -374,12 +388,14 @@
     <Content Include="Content\assets\img\latest-news\news-bg-5.jpg" />
     <Content Include="Content\assets\img\latest-news\news-bg-6.jpg" />
     <Content Include="Content\assets\img\logo.png" />
+    <Content Include="Content\assets\img\MacBookPro1.jpg" />
     <Content Include="Content\assets\img\products\product-img-1.jpg" />
     <Content Include="Content\assets\img\products\product-img-2.jpg" />
     <Content Include="Content\assets\img\products\product-img-3.jpg" />
     <Content Include="Content\assets\img\products\product-img-4.jpg" />
     <Content Include="Content\assets\img\products\product-img-5.jpg" />
     <Content Include="Content\assets\img\products\product-img-6.jpg" />
+    <Content Include="Content\assets\img\steven job.jpg" />
     <Content Include="Content\assets\img\team\team-1.jpg" />
     <Content Include="Content\assets\img\team\team-2.jpg" />
     <Content Include="Content\assets\img\team\team-3.jpg" />
@@ -400,6 +416,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -476,6 +493,8 @@
     <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.ttf" />
     <Content Include="Areas\Admin\Content\font\glyphiconshalflings-regular.woff" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -483,7 +502,12 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -509,12 +533,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shop\DetailPro.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\DetailPro.cshtml" />
+    <Content Include="Views\Categories\Categories.cshtml" />
+    <Content Include="Views\Categories\ProductsCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -81,3 +81,7 @@ C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.xml
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.xml
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.xml

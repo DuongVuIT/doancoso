@@ -15,7 +15,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="int" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Des" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="Total" Type="float" Nullable="false" />
@@ -62,7 +62,7 @@
     <Property Name="IdShipper" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="int" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Image" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Status">
@@ -92,7 +92,7 @@
     <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Phone" Type="int" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IdRole" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Order_Shipper">

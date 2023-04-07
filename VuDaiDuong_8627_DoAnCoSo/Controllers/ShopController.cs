@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList;
 using System.Web.Mvc;
+using VuDaiDuong_8627_DoAnCoSo.Models;
 
 namespace VuDaiDuong_8627_DoAnCoSo.Controllers
 {
     public class ShopController : Controller
     {
-        // GET: Shop
-        public ActionResult Index()
+        DACSEntities db = new DACSEntities();
+        public ActionResult Index(int page = 1, int pagesize = 6)
         {
-            return View();
+            return View(db.Products.ToList().ToPagedList(page, pagesize));
         }
-        public ActionResult DetailPro()
+        public ActionResult DetailPro(int id)
         {
-            return View();
+            Product pro = db.Products.SingleOrDefault(n => n.IdProduct == id);
+            return View(pro);
+            
         }
     }
 }
