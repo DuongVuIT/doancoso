@@ -360,13 +360,13 @@
     <Content Include="Content\assets\img\1.jpg" />
     <Content Include="Content\assets\img\a.jpg" />
     <Content Include="Content\assets\img\abt.jpg" />
-    <Content Include="Content\assets\img\anhgioithieu.jpg" />
+    <Content Include="Content\assets\img\anhapple.jpg" />
     <Content Include="Content\assets\img\anhnenvideo.jpg" />
     <Content Include="Content\assets\img\AppleWatchSeries5.jpg" />
     <Content Include="Content\assets\img\avaters\avatar1.png" />
     <Content Include="Content\assets\img\avaters\avatar2.png" />
     <Content Include="Content\assets\img\avaters\avatar3.png" />
-    <Content Include="Content\assets\img\banner.jpg" />
+    <Content Include="Content\assets\img\background.jpg" />
     <Content Include="Content\assets\img\breadcrumb-bg.jpg" />
     <Content Include="Content\assets\img\company-logos\1.png" />
     <Content Include="Content\assets\img\company-logos\2.png" />
@@ -374,10 +374,8 @@
     <Content Include="Content\assets\img\company-logos\4.png" />
     <Content Include="Content\assets\img\company-logos\5.png" />
     <Content Include="Content\assets\img\dd.jpg" />
+    <Content Include="Content\assets\img\duong.jpg" />
     <Content Include="Content\assets\img\favicon.png" />
-    <Content Include="Content\assets\img\feature-bg.jpg" />
-    <Content Include="Content\assets\img\hero-bg-2.jpg" />
-    <Content Include="Content\assets\img\hero-bg-3.jpg" />
     <Content Include="Content\assets\img\hero-bg.jpg" />
     <Content Include="Content\assets\img\homepage-bg-pattern.png" />
     <Content Include="Content\assets\img\iPhone13.jpg" />
@@ -389,6 +387,7 @@
     <Content Include="Content\assets\img\latest-news\news-bg-6.jpg" />
     <Content Include="Content\assets\img\logo.png" />
     <Content Include="Content\assets\img\MacBookPro1.jpg" />
+    <Content Include="Content\assets\img\mark.jpg" />
     <Content Include="Content\assets\img\products\product-img-1.jpg" />
     <Content Include="Content\assets\img\products\product-img-2.jpg" />
     <Content Include="Content\assets\img\products\product-img-3.jpg" />
@@ -537,6 +536,7 @@
     <Content Include="Views\Shop\DetailPro.cshtml" />
     <Content Include="Views\Categories\Categories.cshtml" />
     <Content Include="Views\Categories\ProductsCategories.cshtml" />
+    <Content Include="Views\Home\DetailPro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

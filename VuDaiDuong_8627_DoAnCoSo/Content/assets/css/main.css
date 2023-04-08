@@ -37,7 +37,8 @@ a {
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; 
+    color : black;
 }
 
     a:hover {
@@ -480,7 +481,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-bg {
-    background-image: url(../img/breadcrumb-bg.jpg);
+    background-image: url(../img/background.jpg);
 }
 
 .breadcrumb-text p {
@@ -2071,7 +2072,7 @@ a.video-play-btn {
 }
 
 .abt-bg {
-    background-image: url(../img/anhgioithieu.jpg);
+    background-image: url(../img/anhapple.jpg);
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -2163,7 +2164,7 @@ a.video-play-btn {
 }
 
     .feature-bg:after {
-        background-image: url(../img/feature-bg.jpg);
+        background-image: url(../img/anhapple.jpg);
         position: absolute;
         right: 0;
         top: 0;
@@ -2179,19 +2180,15 @@ a.video-play-btn {
     }
 
 .team-bg-1 {
-    background-image: url(../img/team/team-1.jpg);
+    background-image: url('../img/steven job.jpg');
 }
 
 .team-bg-2 {
-    background-image: url(../img/team/team-2.jpg);
+    background-image: url(../img/duong.jpg);
 }
 
 .team-bg-3 {
-    background-image: url(../img/team/team-3.jpg);
-}
-
-.team-bg-4 {
-    background-image: url(../img/team/team-4.jpg);
+    background-image: url(../img/mark.jpg);
 }
 
 .team-bg {
@@ -2403,7 +2400,7 @@ ul.social-link-team {
             .product-filters ul li.active {
                 border: 2px solid #F28123;
                 background-color: #F28123;
-                color: #fff;
+                color: black;
             }
 
 .single-product-item {

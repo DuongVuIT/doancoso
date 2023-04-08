@@ -1,4 +1,9 @@
-﻿    <!--PreLoader-->
+﻿@model IEnumerable<VuDaiDuong_8627_DoAnCoSo.Models.Product>
+@using VuDaiDuong_8627_DoAnCoSo.Models;
+@{
+    ViewBag.Title = "Trang chu";
+}
+<!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
         <div class="circle"></div>
@@ -160,36 +165,26 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="@Url.Action("DetailPro","Shop")"><img src="~/Content/assets/img/iPhone13.jpg" alt=""></a>
+
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 text-center strawberry">
+                    <div class="single-product-item">
+                        <input type="hidden" value="@item.IdProduct" id="proid" />
+                        <div class="product-image">
+                            <a href="@Url.Action("DetailPro", new { id = item.IdProduct})"><img src="@Url.Content("~/Images/"+item.Image)" alt=""></a>
+                        </div>
+                        <div>
+                            <div class="featured__item__text">
+                            </div>
+                        </div>
+                        <h3>@item.Name </h3>
+                        <p class="product-price"><span></span>@item.Price.ToString("N0") VND</p>
+                        <a onclick="AddToCart(@item.IdProduct)" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
-                    <h3>Iphone</h3>
-                    <p class="product-price"><span></span> 17.000.000 VNĐ </p>
-                    <a href="" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="@Url.Action("DetailPro","Shop")"><img src="~/Content/assets/img/MacBookPro1.jpg" alt=""></a>
-                    </div>
-                    <h3>Macbook</h3>
-                    <p class="product-price"><span></span> 23.000.000 VNĐ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="@Url.Action("DetailPro","Shop")"><img src="~/Content/assets/img/AppleWatchSeries5.jpg" alt=""></a>
-                    </div>
-                    <h3>AppleWatch</h3>
-                    <p class="product-price"><span></span> 8.000.000 VNĐ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>
@@ -207,7 +202,7 @@
                         <div class="client-meta">
                             <h3>Steven Job <span>CEO</span></h3>
                             <p class="testimonial-body">
-                                " Lấy sự hài lòng của khách hàng làm thước đo của sự thành công. "
+                                "The satisfaction of customers is the measure of success."
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -221,7 +216,7 @@
                         <div class="client-meta">
                             <h3>Steven Job <span>CEO</span></h3>
                             <p class="testimonial-body">
-                                " Lấy sự hài lòng của khách hàng làm thước đo của sự thành công. "
+                                "The satisfaction of customers is the measure of success."
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -235,7 +230,7 @@
                         <div class="client-meta">
                             <h3>Steven Job <span>CEO</span></h3>
                             <p class="testimonial-body">
-                                " Lấy sự hài lòng của khách hàng làm thước đo của sự thành công. "
+                                "The satisfaction of customers is the measure of success."
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
