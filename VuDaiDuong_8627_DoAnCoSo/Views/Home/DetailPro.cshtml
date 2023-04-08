@@ -5,7 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            model.id = @Model.IdProduct;
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data: JSON.stringify(model),
+                dataType: "Json",
+                contentType: "application/json; charset = utf-8",
+                success: function () {
+                    alert("Thên giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
 <div class="loader">
     <div class="loader-inner">
         <div class="circle"></div>
@@ -42,7 +67,7 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
@@ -82,7 +107,7 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
 
-                
+
                 </div>
             </div>
         </div>

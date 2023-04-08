@@ -1,0 +1,222 @@
+﻿@model IEnumerable<VuDaiDuong_8627_DoAnCoSo.Models.Cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- logo -->
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item">
+                                <a href="@Url.Action("Index","Home")">Home</a>
+
+                            </li>
+                            <li><a href="@Url.Action("About","Home")">About</a></li>
+
+
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            <li>
+                                <a href="@Url.Action("Index","Shop")">Shop</a>
+
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search arewa -->
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#updatecart").click(function () {
+            var lstsanpham = $('.txtquantity');
+            var cartlst = [];
+            $.each(lstsanpham, function (i, item) {
+                cartlst.push({
+                    Quantity: $(item).val(),
+                    San_Pham: {
+                        id: $(item).data('id')
+                    }
+                });
+            });
+
+            $.ajax({
+                url: '@Url.Action("Update", "Cart")',
+                data: { cartModel: JSON.stringify(cartlst) },
+                dataType: "json",
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "@Url.Action("Index", "Cart")"
+                    }
+
+                }
+            })
+        });
+
+
+
+    });
+</script>
+@*<script type="text/javascript">
+        $(function () {
+
+            $("#removecart").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    data: { id: $(this).data('id') },
+                    url: '@Url.Action("Remove", "Cart")',
+                    dataType: "json",
+                    type: 'POST',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = "@Url.Action("Index", "Cart")"
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>*@
+
+
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            @if (Model != null)
+            {
+                <div class="col-lg-8 col-md-12">
+                    <div class="cart-table-wrap">
+                        <table class="cart-table">
+                            <thead class="cart-table-head">
+                                <tr class="table-head-row">
+                                    <th class="product-remove"></th>
+                                    <th class="product-image">Product Image</th>
+                                    <th class="product-name">Name</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-total">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="table-body-row">
+                                        <td class="product-remove"><a href="#" data-id="@item.product.IdProduct" id="removecart"><i class="far fa-window-close"></i></a></td>
+                                        <td class="product-image"><img src="~/Images/@item.product.Image" alt=""></td>
+                                        <td class="product-name">@item.product.Name</td>
+                                        <td class="product-price">@item.product.Price.ToString("N0")</td>
+                                        <td class="product-quantity"><input type="number" min="1" max="5" class="txtquantity" data-id="@item.product.Quantity" placeholder="@item.Quantity" value="@item.Quantity"></td>
+                                        <td class="product-total">@((item.product.Price * item.Quantity).ToString("N0")) VND</td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="total-section">
+                        <table class="total-table">
+                            <thead class="total-table-head">
+                                <tr class="table-total-row">
+                                    <th>Total</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="total-data">
+                                    <td><strong>Subtotal: </strong></td>
+                                    <td>
+                                        @if (Session["cart"] != null)
+                                        {
+                                            <a class="primary-btn ">
+                                                @(Model.Sum(n => n.Quantity * n.product.Price).ToString("N0")) VND
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cart-buttons">
+                            <a href="" class="boxed-btn" id="updatecart">Update Cart</a>
+                            <a href="@Url.Action("Checkout","Checkout")" class="boxed-btn black">Check Out</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+            }
+        </div>
+    </div>
+</div>
+

@@ -35,7 +35,7 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
@@ -243,3 +243,29 @@
     </div>
 </div>
 <!-- end testimonail-section -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function AddToCart(id_pr) {
+        var model = {};
+        model.id = id_pr;
+        model.Quantity = 1;
+        $.ajax({
+            type: "POST",
+            url: "/Cart/AddToCart",
+            data: JSON.stringify(model),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function () {
+                alert("Thêm vào giỏ hàng thành công!");
+                var cartCount = parseInt($('#CartCount').text()) || 0;
+                $('#CartCount').text(cartCount + 1);
+            },
+            error: function () {
+                alert("Lỗi trong khi thêm vào giỏ hàng!");
+            }
+        });
+        return false;
+
+    }
+</script>
