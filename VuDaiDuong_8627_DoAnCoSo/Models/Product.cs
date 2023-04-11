@@ -11,7 +11,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Xml.Linq;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +29,9 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public double Price { get; set; }
         public string Des { get; set; }
         public int Quantity { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss tt}")]
         public System.DateTime Date { get; set; }
+     
         public int IdCategory { get; set; }
     
         public virtual Category Category { get; set; }

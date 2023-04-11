@@ -41,6 +41,18 @@ textarea {
   height: auto;
 }
 
+.form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.form-horizontal .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
 textarea,
 input[type="text"],
 input[type="password"],
@@ -890,6 +902,7 @@ legend + .control-group {
 .form-horizontal .control-label {
   float: left;
   width: 160px;
+  margin-right : 20px;
   padding-top: 5px;
   text-align: right;
 }
