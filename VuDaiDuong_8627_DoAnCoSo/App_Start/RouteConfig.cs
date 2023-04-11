@@ -18,6 +18,12 @@ namespace VuDaiDuong_8627_DoAnCoSo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+                routes.MapRoute(
+                name: "Search",
+                url: "search/{keyword}",
+                defaults: new { controller = "Search", action = "Search", keyword = UrlParameter.Optional }
+                );
+
         }
     }
 }
