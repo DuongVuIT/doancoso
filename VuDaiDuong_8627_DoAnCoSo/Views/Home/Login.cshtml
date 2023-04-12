@@ -1,0 +1,44 @@
+﻿@model VuDaiDuong_8627_DoAnCoSo.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0 text-center">LOGIN</h4>
+            </div>
+
+            <div class="card-body">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Username", required = "required" })
+                        @ViewBag.errortk
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label" })
+                        @Html.PasswordFor(model => model.PassWord, new { @class = "form-control", placeholder = "Password", required = "required" })
+                        @ViewBag.errormk
+                        @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+                        <div class="invalid-feedback">Please enter your password.</div>
+                    </div>
+                    <div class="signup_link">
+                        Not a member? <a href="@Url.Action("Register","Home")">Register</a>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

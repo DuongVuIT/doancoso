@@ -15,15 +15,15 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var cate = db.Categories.ToList();
-            if (Session["IdUser"] == null)
+            if (Session["IdUser"] == null || Session["IdRole"] == null || (int)Session["IdRole"] != 1)
             {
-                return RedirectToAction("Login","Admin");
+                return RedirectToAction("Login", "Admin");
             }
             else
             {
                 return View(cate);
             }
-            
+
         }
 
         [HttpGet]

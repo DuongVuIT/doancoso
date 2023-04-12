@@ -13,15 +13,17 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         // GET: Admin/Admin
         public ActionResult Index()
         {
-            if (Session["IdUser"] == null)
+
+            if (Session["IdUser"] == null || Session["IdRole"] == null || (int)Session["IdRole"] != 1)
             {
-                return RedirectToAction("Login","Admin");
+                return RedirectToAction("Login", "Admin");
             }
             else
             {
                 return View();
             }
-            
+
+
         }
 
         [HttpGet]
@@ -41,15 +43,16 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
                 if (data.Count() > 0)
                 {
                     Session["FullName"] = data.FirstOrDefault().FullName;
-                    Session["Role"] = data.FirstOrDefault().Role;
+                 
                     Session["IdUser"] = data.FirstOrDefault().IdUser;
-                    if (Session["role"] == null)
+                    Session["IdRole"] = data.FirstOrDefault().IdRole;
+                    if (Session["IdRole"] != null && int.Parse(Session["IdRole"].ToString()) == 1)
                     {
-                        return Redirect("~");
+                        return RedirectToAction("Index", "Admin");
                     }
                     else
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Login", "Admin");
                     }
                 }
                 else

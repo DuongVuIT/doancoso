@@ -43,6 +43,22 @@
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="mobile-hide user-bar-icon" href="@Url.Action("Login","Home")">
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <div style="color:white"> Welcome : @Session["FullName"]</div>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-user"></i>
+                                        }
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <ul>
+                                                <li><a href="~/Home/Logout"><i class="fa fa-user"></i> Log out</a></li>
+                                            </ul>
+                                        }
+                                    </a>
                                 </div>
                             </li>
                         </ul>
