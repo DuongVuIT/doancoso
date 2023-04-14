@@ -3,6 +3,53 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $("#updatecart").click(function () {
+            var lstsanpham = $('.txtquantity');
+            var cart = [];
+            $.each(lstsanpham, function () {
+                cart.push({
+                    Quantity: $(this).val(),
+                    Product: {
+                        IdProduct: $(this).data('id')
+                    }
+                });
+            });
+
+            $.ajax({
+                url: '@Url.Action("Update", "Cart")',
+                data: { cartModel: JSON.stringify(cart) },
+                dataType: "json",
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "@Url.Action("Index", "Cart")"
+                    }
+
+                }
+            });
+        });
+
+        $("#removecart").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                data: { id: $(this).data('id') },
+                url: '@Url.Action("Remove", "Cart")',
+                dataType: "json",
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "@Url.Action("Index", "Cart")"
+                    }
+
+                }
+            });
+        });
+    });
+</script>
 
 <div
 <!--PreLoader-->
@@ -44,11 +91,28 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="mobile-hide user-bar-icon" href="@Url.Action("Login","Home")">
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <div style="color:white"> Welcome : @Session["FullName"]</div>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-user"></i>
+                                        }
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <ul>
+                                                <li><a href="~/Home/Logout"><i class="fa fa-user"></i> Log out</a></li>
+                                            </ul>
+                                        }
+                                    </a>
                                 </div>
                             </li>
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+
                     <div class="mobile-menu"></div>
                     <!-- menu end -->
                 </div>
@@ -87,62 +151,6 @@
     </div>
 </div>
 <!-- end breadcrumb section -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-
-        $("#updatecart").click(function () {
-            var lstsanpham = $('.txtquantity');
-            var cartlst = [];
-            $.each(lstsanpham, function (i, item) {
-                cartlst.push({
-                    Quantity: $(item).val(),
-                    San_Pham: {
-                        id: $(item).data('id')
-                    }
-                });
-            });
-
-            $.ajax({
-                url: '@Url.Action("Update", "Cart")',
-                data: { cartModel: JSON.stringify(cartlst) },
-                dataType: "json",
-                type: 'POST',
-                success: function (res) {
-                    if (res.status == true) {
-                        window.location.href = "@Url.Action("Index", "Cart")"
-                    }
-
-                }
-            })
-        });
-
-
-
-    });
-</script>
-@*<script type="text/javascript">
-        $(function () {
-
-            $("#removecart").click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    data: { id: $(this).data('id') },
-                    url: '@Url.Action("Remove", "Cart")',
-                    dataType: "json",
-                    type: 'POST',
-                    success: function (res) {
-                        if (res.status == true) {
-                            window.location.href = "@Url.Action("Index", "Cart")"
-                        }
-
-                    }
-                });
-            });
-        });
-    </script>*@
-
-
 <div class="cart-section mt-150 mb-150">
     <div class="container">
         <div class="row">
@@ -164,14 +172,14 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="table-body-row">
-                                        <td class="product-remove"><a href="#" data-id="@item.product.IdProduct" id="removecart"><i class="far fa-window-close"></i></a></td>
-                                        <td class="product-image"><img src="~/Images/@item.product.Image" alt=""></td>
-                                        <td class="product-name">@item.product.Name</td>
-                                        <td class="product-price">@item.product.Price.ToString("N0")</td>
-                                        <td class="product-quantity"><input type="number" min="1" max="5" class="txtquantity" data-id="@item.product.Quantity" placeholder="@item.Quantity" value="@item.Quantity"></td>
-                                        <td class="product-total">@((item.product.Price * item.Quantity).ToString("N0")) VND</td>
-                                    </tr>
+                                   <tr class="table-body-row">
+                                       <td class="product-remove"><a href="#" data-id="@item.Product.IdProduct" id="removecart"><i class="far fa-window-close"></i></a></td>
+                                       <td class="product-image"><img src="~/Images/@item.Product.Image" alt=""></td>
+                                       <td class="product-name">@item.Product.Name</td>
+                                       <td class="product-price">@item.Product.Price.ToString("N0")</td>
+                                       <td class="product-quantity"><input type="number" min="1" max="5" class="txtquantity" data-id="@item.Product.IdProduct" placeholder="@item.Quantity" value="@item.Quantity"></td>
+                                       <td class="product-total">@((item.Product.Price * item.Quantity).ToString("N0")) VND</td>
+                                   </tr>
                                 }
 
 
@@ -196,7 +204,7 @@
                                         @if (Session["cart"] != null)
                                         {
                                             <a class="primary-btn ">
-                                                @(Model.Sum(n => n.Quantity * n.product.Price).ToString("N0")) VND
+                                                @(Model.Sum(n => n.Quantity * n.Product.Price).ToString("N0")) VND
                                             </a>
                                         }
                                     </td>

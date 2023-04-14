@@ -1,0 +1,96 @@
+﻿@model IEnumerable<VuDaiDuong_8627_DoAnCoSo.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header">
+            <h2><i class="halflings-icon align-justify"></i><span class="break"></span>List User</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+            </div>
+        </div>
+
+        <div class="box-content">
+
+            <table class="table table-bordered table-striped table-condensed">
+
+                <thead>
+
+                    <tr>
+
+                        <th class="left">
+                            <a class="btn btn-success" onclick="location.href='@Url.Action("Create")'">
+                                <i class="halflings-icon plus-sign"></i>
+                            </a>
+
+                        </th>
+
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role.NameRole)
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                         
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role.NameRole)
+                            </td>
+
+                            <td class="center">
+                                <a class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.IdUser })'"><i class="halflings-icon white zoom-in"></i></a>
+                                <a class="btn btn-info" onclick="location.href='@Url.Action("Edit", new { id = item.IdUser })'"><i class="halflings-icon white edit"></i></a>
+                                <a class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.IdUser })'"><i class="halflings-icon white trash"></i></a>
+                            </td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div><!--/span-->
+</div><!--/row-->

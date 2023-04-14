@@ -98,8 +98,6 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                     {
                         return RedirectToAction("Index", "Home");
                     }
-
-
                 }
                 else if (tk.Count() > 0 || mk.Count() < 0)
                 {

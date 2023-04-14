@@ -7,7 +7,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
 {
     public class Cart
     {
-        public Product product { get; set; }
+        public Product Product { get; set; }
         public int Quantity { get; set; }
     }
 }
