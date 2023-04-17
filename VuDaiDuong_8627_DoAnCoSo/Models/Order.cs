@@ -22,15 +22,15 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
     
         public int IdOrder { get; set; }
         public string Name { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public string Des { get; set; }
         public System.DateTime Date { get; set; }
         public double Total { get; set; }
-        public int IdUser { get; set; }
-        public int IdShipper { get; set; }
-        public int IdStatus { get; set; }
+        public Nullable<int> IdUser { get; set; }
+        public Nullable<int> IdShipper { get; set; }
+        public Nullable<int> IdStatus { get; set; }
     
         public virtual Shipper Shipper { get; set; }
         public virtual Status Status { get; set; }

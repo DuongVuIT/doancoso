@@ -1,0 +1,199 @@
+﻿@model IEnumerable<VuDaiDuong_8627_DoAnCoSo.Models.Cart>
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--PreLoader-->
+<div class="loader">
+    <div class="loader-inner">
+        <div class="circle"></div>
+    </div>
+</div>
+<!--PreLoader Ends-->
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <img src="/Content//Content/assets/img/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- logo -->
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item">
+                                <a href="@Url.Action("Index","Home")">Home</a>
+
+                            </li>
+                            <li><a href="@Url.Action("About","Home")">About</a></li>
+
+
+                            <li><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            <li>
+                                <a href="@Url.Action("Index","Shop")">Shop</a>
+
+                            </li>
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="mobile-hide user-bar-icon" href="@Url.Action("Login","Home")">
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <div style="color:white"> Welcome : @Session["FullName"]</div>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-user"></i>
+                                        }
+                                        @if (Session["IdUser"] != null)
+                                        {
+                                            <ul>
+                                                <li><a href="~/Home/Logout"><i class="fa fa-user"></i> Log out</a></li>
+                                            </ul>
+                                        }
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        @using (Html.BeginForm("Search", "Search", FormMethod.Get))
+                        {
+                            <h3>Search For:</h3>
+                            <form action="#">
+                                @Html.TextBox("keyword", "", htmlAttributes: new { @type = "text", @class = "TextBoxTimkiem", @placeholder = "Keywords" })
+                                <button type="submit">Search<i class="fas fa-search"></i></button>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search arewa -->
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<div class="checkout-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            @if (Model != null)
+            {
+                <div class="col-lg-8">
+                    <div class="checkout-accordion-wrap">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card single-accordion">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Billing Address
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="billing-address-form">
+                                            @using (Html.BeginForm("Checkout", "Checkout", FormMethod.Post))
+                                            {
+                                                <form>
+                                                    <p><input name="Name" type="text" placeholder="Name"></p>
+                                                    <p><input name="Email" type="email" placeholder="Email"></p>
+                                                    <p><input type="text" name="Address" placeholder="Address"></p>
+                                                    <p><input type="tel" name="Phone" placeholder="Phone"></p>
+                                                    <p><textarea name="Des" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
+                                                    <button type="submit" class="boxed-btn black">Place Order</button>
+                                                </form>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="order-details-wrap">
+                        <table class="order-details">
+                            <thead>
+                                <tr>
+                                    <th>Your order Details</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody class="order-details-body">
+                                <tr>
+                                    <td>Product</td>
+                                    <td>Total</td>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.Product.Price.ToString("N0")</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tbody class="checkout-details">
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>
+
+                                        <a class="primary-btn ">
+                                            @(Model.Sum(n => n.Quantity * n.Product.Price).ToString("N0")) VND
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa có sản phẩm nào trong giỏ hàng</span>
+            }
+
+        </div>
+    </div>
+</div>

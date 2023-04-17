@@ -24,7 +24,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public string FullName { get; set; }
-        public int Phone { get; set; }
+        public Nullable<int> Phone { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
         public int IdRole { get; set; }
