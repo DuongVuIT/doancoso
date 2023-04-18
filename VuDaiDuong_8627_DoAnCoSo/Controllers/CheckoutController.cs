@@ -25,6 +25,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             if (IdUser == 0)
             {
                 return RedirectToAction("Login", "Home");
+                
             }
             List<Cart> ck = (List<Cart>)Session["cart"];
 

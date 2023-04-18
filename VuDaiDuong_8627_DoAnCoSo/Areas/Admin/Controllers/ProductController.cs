@@ -47,5 +47,25 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var product = db.Products.Where(n=>n.IdProduct == id).FirstOrDefault();
+            return View(product);
+        }
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            var cate = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
+            return View(cate);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var pro = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
+            db.Products.Remove(pro);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
