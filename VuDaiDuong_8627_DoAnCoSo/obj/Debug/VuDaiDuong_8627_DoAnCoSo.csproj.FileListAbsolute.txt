@@ -51,9 +51,13 @@ C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\roslyn\VBCSCompiler.exe
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Helpers.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Mvc.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Optimization.dll
@@ -62,6 +66,10 @@ C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.WebPages.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.WebPages.Razor.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\WebGrease.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.xml
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.xml
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.xml
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Helpers.xml
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Mvc.xml
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\System.Web.Optimization.xml
@@ -77,11 +85,3 @@ C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.csproj.CopyComplete
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.pdb
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.dll
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.dll
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.xml
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\EntityFramework.SqlServer.xml
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.dll
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.dll
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.xml
-C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PagedList.Mvc.xml

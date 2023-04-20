@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -50,20 +51,46 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var product = db.Products.Where(n=>n.IdProduct == id).FirstOrDefault();
+            var product = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
             return View(product);
         }
+
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            var cate = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
-            return View(cate);
+
+            var product = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
+            return View(product);
         }
         [HttpPost]
+
         public ActionResult Delete(int id)
         {
-            var pro = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
-            db.Products.Remove(pro);
+            var product = db.Products.Where(n => n.IdProduct == id).FirstOrDefault();
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var pro = db.Products.Where(n=>n.IdProduct == id).FirstOrDefault();
+            ViewBag.IdCategory = new SelectList(db.Categories, "IdCategory", "CategoryName", pro.IdCategory);
+            return View(pro);
+        }
+        [HttpPost]
+        public ActionResult Edit(Product pro, HttpPostedFileBase ImageUpload)
+        {
+            if (ImageUpload != null && ImageUpload.ContentLength > 0)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                string extension = Path.GetExtension(ImageUpload.FileName);
+                fileName = fileName + extension;
+                pro.Image = fileName;
+                ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images"), fileName));
+            }
+
+            db.Entry(pro).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

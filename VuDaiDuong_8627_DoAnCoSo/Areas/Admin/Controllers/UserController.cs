@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,21 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
             var user = db.Users.Where(n => n.IdUser == id).FirstOrDefault();
             return View(user);
         }
+        [HttpGet]
+        public ActionResult Delete(int ?id)
+        {
+            var user = db.Users.Where(n => n.IdUser == id).FirstOrDefault();
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var iduser = db.Users.Where(n => n.IdUser == id).FirstOrDefault();
+            db.Users.Remove(iduser);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        
 
     }
 }

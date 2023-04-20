@@ -5,77 +5,64 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Des)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Des)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.CategoryName)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+@if (Model != null)
+{
+    <div class="row-fluid sortable">
+        <div class="box span12">
+            <div class="box-header">
+                <h2><i class="halflings-icon align-justify"></i><span class="break"></span>Details</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                    <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                    <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Image)</th>
+                            <th>@Html.DisplayNameFor(model => model.Price)</th>
+                            <th>@Html.DisplayNameFor(model => model.Des)</th>
+                            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => model.Date)</th>
+                            <th>@Html.DisplayNameFor(model => model.Category.CategoryName)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayFor(model => model.Name)</td>
+                            <td> <div><img src="@Url.Content("~/Images/"+Model.Image)" width="80" height="60" /></div></td>
+                            <td>@Html.DisplayFor(model => model.Price)</td>
+                            <td>@Html.DisplayFor(model => model.Des)</td>
+                            <td>@Html.DisplayFor(model => model.Quantity)</td>
+                            <td>@Html.DisplayFor(model => model.Date)</td>
+                            <td>@Html.DisplayFor(model => model.Category.CategoryName)</td>
+                            @using (Html.BeginForm("Delete", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <td class="center">
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                    <a href="@Url.Action("Index", "Product")" class="btn btn-success">Back to list</a>
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    }
-</div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">The product you are trying to delete does not exist.</div>
+    <a href="@Url.Action("Index", "Product")" class="btn btn-success">Back to list</a>
+}
