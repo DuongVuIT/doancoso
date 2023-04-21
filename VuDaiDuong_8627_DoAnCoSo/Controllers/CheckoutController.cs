@@ -21,23 +21,28 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
         [HttpPost]
         public ActionResult Checkout(string Name, string Phone, string Email, string Address, string Des)
         {
-            int IdUser = (int)Session["IdUser"];
-            if (IdUser == 0)
-            {
-                return RedirectToAction("Login", "Home");
-                
-            }
+           
+            
             List<Cart> ck = (List<Cart>)Session["cart"];
 
             Order order = new Order();
             order.Date = DateTime.UtcNow.AddHours(7);
-            order.IdUser = IdUser;
+           
             order.Name = Name;
             order.Email = Email;
             order.Address = Address;
             order.Phone = Phone;
             order.Des = Des;
             order.Total = ck.Sum(n => n.Quantity * n.Product.Price);
+            if (Session["IdUser"] != null)
+            {
+                
+                order.IdUser = int.Parse(Session["IdUser"].ToString());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
 
             Session["Total"] = order.Total;
             Session["FullName"] = order.Name;
