@@ -4,19 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="45e63703bb014e919f3627889d6167df" Name="Diagram1">
-        <EntityTypeShape EntityType="DACSModel.Category" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+      <Diagram DiagramId="d966ec713f3f4d1eb9d29859471dea67" Name="Diagram1">
+        <EntityTypeShape EntityType="DACSModel.Category" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.OrderDetail" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.Product" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.Shipper" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.Status" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.User" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.OrderDetail" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.Product" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.Role" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.Shipper" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.Status" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.User" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="DACSModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="DACSModel.FK_Order_Shipper" ManuallyRouted="false" />
-        <AssociationConnector Association="DACSModel.FK_Order_Status" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_OrderDetail_Order" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_OrderDetail_Product" ManuallyRouted="false" />

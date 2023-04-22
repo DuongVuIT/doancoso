@@ -69,7 +69,7 @@
                                 <div><img src="@Url.Content("~/Images/"+item.Image)" width="80" height="60" /></div>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Price)
+                                @Html.Raw(item.Price.ToString("N0"))
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Des)

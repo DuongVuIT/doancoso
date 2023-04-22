@@ -21,8 +21,6 @@
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="IdShipper" ColumnName="IdShipper" />
-          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

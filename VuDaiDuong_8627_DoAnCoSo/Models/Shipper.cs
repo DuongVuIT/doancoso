@@ -14,19 +14,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
     
     public partial class Shipper
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shipper()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int IdShipper { get; set; }
         public string FullName { get; set; }
         public int Phone { get; set; }
         public string Address { get; set; }
         public string Image { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -29,11 +29,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public System.DateTime Date { get; set; }
         public double Total { get; set; }
         public Nullable<int> IdUser { get; set; }
-        public Nullable<int> IdShipper { get; set; }
-        public Nullable<int> IdStatus { get; set; }
     
-        public virtual Shipper Shipper { get; set; }
-        public virtual Status Status { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

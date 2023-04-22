@@ -39,7 +39,7 @@
                         <tr>
                             <td>@Html.DisplayFor(model => model.Name)</td>
                             <td> <div><img src="@Url.Content("~/Images/"+Model.Image)" width="80" height="60" /></div></td>
-                            <td>@Html.DisplayFor(model => model.Price)</td>
+                            <td>@Html.Raw(Model.Price.ToString("N0"))</td>
                             <td>@Html.DisplayFor(model => model.Des)</td>
                             <td>@Html.DisplayFor(model => model.Quantity)</td>
                             <td>@Html.DisplayFor(model => model.Date)</td>

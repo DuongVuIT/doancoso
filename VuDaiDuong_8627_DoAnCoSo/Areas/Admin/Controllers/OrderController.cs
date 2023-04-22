@@ -18,17 +18,18 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
-            List<OrderDetail> detail = db.OrderDetails.Where(n => n.IdOrder == id).ToList();
-            return View(detail.ToList());
+            var order = db.OrderDetails.Where(n => n.IdOrder == id).FirstOrDefault();
+            return View(order);
         }
         [HttpGet]
         public ActionResult Edit(int ?id)
         {
-            var order = db.OrderDetails.Where(n => n.IdOrder == id).FirstOrDefault();
+            var order = db.Orders.Where(n => n.IdOrder == id).FirstOrDefault();
+            ViewBag.IdUser = order.Name.ToString();
             return View(order);
         }
         [HttpPost]
-        public ActionResult Edit(OrderDetail order)
+        public ActionResult Edit(Order order)
         {
             db.Entry(order).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();

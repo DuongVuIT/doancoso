@@ -20,8 +20,6 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Total" Type="float" Nullable="false" />
     <Property Name="IdUser" Type="int" />
-    <Property Name="IdShipper" Type="int" />
-    <Property Name="IdStatus" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -95,30 +93,6 @@
     <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IdRole" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Order_Shipper">
-    <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Shipper">
-        <PropertyRef Name="IdShipper" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IdShipper" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="IdStatus" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IdStatus" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Order_User">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Order" Type="Self.Order" Multiplicity="*" />
@@ -191,14 +165,6 @@
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Order_Shipper" Association="Self.FK_Order_Shipper">
-      <End Role="Shipper" EntitySet="Shipper" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Order" EntitySet="Order" />
-    </AssociationSet>
     <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
       <End Role="User" EntitySet="User" />
       <End Role="Order" EntitySet="Order" />

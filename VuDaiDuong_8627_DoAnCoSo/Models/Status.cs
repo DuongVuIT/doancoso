@@ -14,16 +14,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
     
     public partial class Status
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Status()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
         public int IdStatus { get; set; }
         public string Status1 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

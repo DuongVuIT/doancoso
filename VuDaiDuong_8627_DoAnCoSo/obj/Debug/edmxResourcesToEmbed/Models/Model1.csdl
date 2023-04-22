@@ -21,10 +21,6 @@
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Total" Type="Double" Nullable="false" />
     <Property Name="IdUser" Type="Int32" />
-    <Property Name="IdShipper" Type="Int32" />
-    <Property Name="IdStatus" Type="Int32" />
-    <NavigationProperty Name="Shipper" Relationship="Self.FK_Order_Shipper" FromRole="Order" ToRole="Shipper" />
-    <NavigationProperty Name="Status" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="Status" />
     <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
   </EntityType>
@@ -74,7 +70,6 @@
     <Property Name="Phone" Type="Int32" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Shipper" FromRole="Shipper" ToRole="Order" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -82,7 +77,6 @@
     </Key>
     <Property Name="IdStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Status1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Status" FromRole="Status" ToRole="Order" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -118,30 +112,6 @@
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="IdCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Shipper">
-    <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Shipper">
-        <PropertyRef Name="IdShipper" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IdShipper" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="IdStatus" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="IdStatus" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -208,14 +178,6 @@
     <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Shipper" Association="Self.FK_Order_Shipper">
-      <End Role="Shipper" EntitySet="Shippers" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
       <End Role="User" EntitySet="Users" />
