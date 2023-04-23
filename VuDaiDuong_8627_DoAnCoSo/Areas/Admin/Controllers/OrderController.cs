@@ -18,8 +18,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         }
         public ActionResult Details(int id)
         {
-            var order = db.OrderDetails.Where(n => n.IdOrder == id).FirstOrDefault();
-            return View(order);
+            
+            List<OrderDetail> details = db.OrderDetails.Where(n => n.IdOrder == id).ToList();
+
+            return View(details.ToList());
         }
         [HttpGet]
         public ActionResult Edit(int ?id)

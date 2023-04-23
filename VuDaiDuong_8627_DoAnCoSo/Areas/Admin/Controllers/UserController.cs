@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Parser.SyntaxTree;
+using System.Web.UI.WebControls;
 using VuDaiDuong_8627_DoAnCoSo.Models;
 
 namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
@@ -26,8 +28,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var user = db.Users.Where(n => n.IdUser == id).FirstOrDefault();
-            return View(user);
+            List<User> users = db.Users.Where(n => n.IdUser == id).ToList();
+
+            return View(users.ToList());
+           
         }
         [HttpGet]
         public ActionResult Delete(int ?id)
@@ -47,3 +51,4 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
 
     }
 }
+

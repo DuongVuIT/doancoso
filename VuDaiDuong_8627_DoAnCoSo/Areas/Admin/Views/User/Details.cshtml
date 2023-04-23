@@ -1,75 +1,85 @@
-﻿@model VuDaiDuong_8627_DoAnCoSo.Models.User
+﻿@model IEnumerable<VuDaiDuong_8627_DoAnCoSo.Models.User>
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div class="box-header">
+            <h2><i class="halflings-icon align-justify"></i><span class="break"></span>Details</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
+            </div>
+        </div>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
+        <div class="box-content">
 
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
+            <table class="table table-bordered table-striped table-condensed">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PassWord)
-        </dt>
+                <thead>
 
-        <dd>
-            @Html.DisplayFor(model => model.PassWord)
-        </dd>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Role.NameRole)
+                        </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role.NameRole)
+                            </td>
+                            <td class="center">
+                                <a href="@Url.Action("Index", "User")" class="btn btn-success">Back to list</a>
+                            </td>
+                        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
+                    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+                </tbody>
+            </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Role.NameRole)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Role.NameRole)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
