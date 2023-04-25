@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using VuDaiDuong_8627_DoAnCoSo.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace VuDaiDuong_8627_DoAnCoSo.Controllers
 {
@@ -70,7 +72,22 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                 db.OrderDetails.Add(od);
                 db.SaveChanges();
             }
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("duongvuit.26@gmail.com");
+            mail.To.Add(new MailAddress(Email));
+            mail.Subject = "Your order has been placed successfully";
+            mail.Body = "Thank you for placing your order with us. Your order details:\n\n" +
+                        "Name: " + order.Name + "\n" +
+                        "Phone: " + order.Phone + "\n" +
+                        "Address: " + order.Address + "\n" +
+                        "Total: " + order.Total  + "\n\n" +
+                        "We will contact you soon to confirm the details of your order.";
 
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.Port = 587;
+            smtp.Credentials = new NetworkCredential("duongvuit.26@gmail.com", "qoaxmvlrbqxzquhl");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
             return RedirectToAction("CheckoutSuccess");
         }
 
