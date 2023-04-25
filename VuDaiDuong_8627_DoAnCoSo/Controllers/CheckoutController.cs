@@ -23,13 +23,13 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
         [HttpPost]
         public ActionResult Checkout(string Name, string Phone, string Email, string Address, string Des)
         {
-           
-            
+
+
             List<Cart> ck = (List<Cart>)Session["cart"];
 
             Order order = new Order();
             order.Date = DateTime.UtcNow.AddHours(7);
-           
+
             order.Name = Name;
             order.Email = Email;
             order.Address = Address;
@@ -38,7 +38,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             order.Total = ck.Sum(n => n.Quantity * n.Product.Price);
             if (Session["IdUser"] != null)
             {
-                
+
                 order.IdUser = int.Parse(Session["IdUser"].ToString());
             }
             else
@@ -47,9 +47,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             }
 
             Session["Total"] = order.Total;
-            Session["FullName"] = order.Name;
+            Session["Name"] = order.Name;
             Session["Phone"] = order.Phone;
             Session["Des"] = order.Des;
+            Session["Email"] = order.Email;
             Session["Address"] = order.Address;
             Session["Date"] = order.Date;
 
@@ -77,10 +78,11 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             mail.To.Add(new MailAddress(Email));
             mail.Subject = "Your order has been placed successfully";
             mail.Body = "Thank you for placing your order with us. Your order details:\n\n" +
-                        "Name: " + order.Name + "\n" +
-                        "Phone: " + order.Phone + "\n" +
-                        "Address: " + order.Address + "\n" +
-                        "Total: " + order.Total  + "\n\n" +
+                        "Họ tên : " + order.Name + "\n" +
+                        "Số điện thoại : " + order.Phone + "\n" +
+                        "Email : " + order.Email + "\n" +
+                        "Địa chỉ : " + order.Address + "\n" +
+                        "Tổng tiền : " + order.Total.ToString("#,##0.00") + " VNĐ\n\n" +
                         "We will contact you soon to confirm the details of your order.";
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com");

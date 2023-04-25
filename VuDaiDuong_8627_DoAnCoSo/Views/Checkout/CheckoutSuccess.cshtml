@@ -108,7 +108,35 @@
     </div>
 </div>
 <!-- end breadcrumb section -->
-<div class="alert alert-success" style="text-align:center">
-    Bạn vừa đặt hàng thành công vui lòng kiểm tra email!
+<div class="container mt-5">
+    <div class="alert alert-success text-center" role="alert">
+        Bạn vừa đặt hàng thành công vui lòng kiểm tra email!
+    </div>
+    <div class="alert alert-success text-center" role="alert">
+        Đây là thông tin đơn hàng của bạn!
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <th>@Html.DisplayNameFor(model => model.Des)</th>
+                </tr>
+            </thead>
+      
+            <tbody>
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => Session["Name"])</td>
+                    <td>@Html.DisplayFor(modelItem => Session["Phone"])</td>
+                    <td>@Html.DisplayFor(modelItem => Session["Address"])</td>
+                    <td>@Html.DisplayFor(modelItem => Session["Email"])</td>
+                    <td>@Html.DisplayFor(modelItem => Session["Des"])</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 

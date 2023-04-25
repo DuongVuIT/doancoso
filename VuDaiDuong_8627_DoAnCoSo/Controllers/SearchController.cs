@@ -45,6 +45,44 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                 return View(timkiem.OrderBy(n => n.Name).ToPagedList(page, Pagesize));
             }
         }
+        public ActionResult AddToCart(int id, int quantity)
+        {
+            if (Session["cart"] == null)
+            {
+                List<Cart> cart = new List<Cart>();
+                cart.Add(new Cart { Product = db.Products.Find(id), Quantity = quantity });
+                Session["cart"] = cart;
+                Session["count"] = 1;
+            }
+            else
+            {
+                List<Cart> cart = (List<Cart>)Session["cart"];
 
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity += quantity;
+                }
+                else
+                {
+                    cart.Add(new Cart { Product = db.Products.Find(id), Quantity = quantity });
+                    Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+
+                }
+                Session["cart"] = cart;
+            }
+            return Json(new { Message = "Thành Công", JsonRequestBehavior.AllowGet });
+        }
+
+        private int isExist(int id)
+        {
+            List<Cart> cart = (List<Cart>)Session["cart"];
+            for (int i = 0; i < cart.Count; i++)
+            {
+                if (cart[i].Product.IdProduct.Equals(id))
+                    return i;
+            }
+            return -1;
+        }
     }
 }
