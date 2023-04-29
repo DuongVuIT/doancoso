@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using PagedList;
 using System.Web.UI;
 using VuDaiDuong_8627_DoAnCoSo.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace VuDaiDuong_8627_DoAnCoSo.Controllers
 {
@@ -25,16 +27,39 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
         }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(string name, string email,string phone, string address, string message)
+        {
+            string adminEmail = "duongvuit.26@gmail.com";
+            string subject = "AppleStore";
+            string body = "Name: " + name + "\n" +
+                         "Email: " + email + "\n" +
+                         "Phone: " + phone + "\n" +
+                         "Address: " + address + "\n\n" +
+                         "Message:\n" + message;
+            var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.Credentials = new NetworkCredential("duongvuit.26@gmail.com", "qoaxmvlrbqxzquhl");
+            smtpClient.EnableSsl = true;
+
+            try
+            {
+                smtpClient.Send("your-email@gmail.com", adminEmail, subject, body);
+                TempData["SuccessMessage"] = "Thank you for contacting us! We will get back to you soon.";
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Failed to send your message. Please try again later.";
+            }
+
+            return RedirectToAction("Contact");
+           
         }
         public ActionResult AddToCart(int id, int quantity)
         {
