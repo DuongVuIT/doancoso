@@ -43,6 +43,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             }
             else
             {
+                
                 return RedirectToAction("Login", "Home");
             }
 
@@ -90,7 +91,9 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             smtp.Credentials = new NetworkCredential("duongvuit.26@gmail.com", "qoaxmvlrbqxzquhl");
             smtp.EnableSsl = true;
             smtp.Send(mail);
+           
             return RedirectToAction("CheckoutSuccess");
+          
         }
 
 

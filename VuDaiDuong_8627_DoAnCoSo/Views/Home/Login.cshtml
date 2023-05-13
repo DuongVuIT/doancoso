@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
 <style>
     .btn-primary {
         color: #fff;
@@ -21,6 +23,7 @@
             <div class="card-body">
                 @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
                 {
+                    
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 

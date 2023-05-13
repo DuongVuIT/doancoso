@@ -16,6 +16,13 @@ namespace VuDaiDuong_8627_DoAnCoSo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Application["visitor"] = 0;
+        }
+      protected void Session_Start()
+        {
+            Application.Lock();
+            Application["visitor"] = (int)Application["visitor"] + 1;
+            Application.UnLock();
         }
     }
 }

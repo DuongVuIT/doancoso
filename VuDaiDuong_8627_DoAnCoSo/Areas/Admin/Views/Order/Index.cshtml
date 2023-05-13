@@ -78,14 +78,10 @@
                             <td>
                                 @Html.Raw(item.Total.ToString("N0"))
                             </td>
-                           
-                            
-
                             <td class="center">
                                 <a class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.IdOrder })'"><i class="halflings-icon white zoom-in"></i></a>
+                                
                                 <a class="btn btn-info" onclick="location.href='@Url.Action("Edit", new { id = item.IdOrder })'"><i class="halflings-icon white edit"></i></a>
-                                <a class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = item.IdOrder })'"><i class="halflings-icon white trash"></i></a>
-
                             </td>
                         </tr>
 
