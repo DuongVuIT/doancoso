@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d966ec713f3f4d1eb9d29859471dea67" Name="Diagram1">
+      <Diagram DiagramId="2c05bebd29324427918c9d001ee89122" Name="Diagram1">
         <EntityTypeShape EntityType="DACSModel.Category" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DACSModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.OrderDetail" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DACSModel.Ordered" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.Product" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.Role" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.Shipper" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
@@ -15,9 +15,9 @@
         <EntityTypeShape EntityType="DACSModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DACSModel.User" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="DACSModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="DACSModel.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_OrderDetail_Order" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DACSModel.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="DACSModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

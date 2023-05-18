@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\Models\AppleStore.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

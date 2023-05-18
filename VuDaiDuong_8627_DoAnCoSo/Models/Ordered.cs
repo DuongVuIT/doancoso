@@ -12,10 +12,10 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Ordered
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Ordered()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
         }
@@ -30,8 +30,8 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public double Total { get; set; }
         public Nullable<int> IdUser { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual User User { get; set; }
     }
 }

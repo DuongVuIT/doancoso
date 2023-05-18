@@ -21,7 +21,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Models
         public int IdProduct { get; set; }
         public int IdOrder { get; set; }
     
-        public virtual Order Order { get; set; }
+        public virtual Ordered Ordered { get; set; }
         public virtual Product Product { get; set; }
     }
 }

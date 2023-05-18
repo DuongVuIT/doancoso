@@ -85,3 +85,5 @@ C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.csproj.CopyComplete
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.dll
 C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\obj\Debug\VuDaiDuong_8627_DoAnCoSo.pdb
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PayPal.dll
+C:\Users\Admin\Documents\DACS\VuDaiDuong_8627_DoAnCoSo\VuDaiDuong_8627_DoAnCoSo\bin\PayPal.xml

@@ -45,7 +45,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                 }
                 Session["cart"] = cart;
             }
-            return Json(new { Message = "Thành Công", JsonRequestBehavior.AllowGet });
+            return Json(new { Message = "Thành Công", ItemCount = Session["count"] ,JsonRequestBehavior.AllowGet });
         }
 
         private int isExist(int id)

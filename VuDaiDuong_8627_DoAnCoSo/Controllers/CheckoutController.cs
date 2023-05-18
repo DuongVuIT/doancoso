@@ -27,7 +27,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
 
             List<Cart> ck = (List<Cart>)Session["cart"];
 
-            Order order = new Order();
+            Ordered order = new Ordered();
             order.Date = DateTime.UtcNow.AddHours(7);
 
             order.Name = Name;
@@ -55,7 +55,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             Session["Address"] = order.Address;
             Session["Date"] = order.Date;
 
-            db.Orders.Add(order);
+            db.Ordereds.Add(order);
             db.SaveChanges();
 
             int details = order.IdOrder;

@@ -283,10 +283,13 @@
             data: JSON.stringify(model),
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            success: function () {
+            success: function (response) {
+               
                 alert("Thêm vào giỏ hàng thành công!");
                 var cartCount = parseInt($('#CartCount').text()) || 0;
-                $('#CartCount').text(cartCount + 1);
+                cartCount = (response && response.ItemCount) ? response.ItemCount : cartCount;
+                
+                $('#CartCount').text(cartCount);
             },
             error: function () {
                 alert("Lỗi trong khi thêm vào giỏ hàng!");

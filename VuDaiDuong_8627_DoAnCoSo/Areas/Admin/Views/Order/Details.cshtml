@@ -42,7 +42,7 @@
                             @Html.DisplayNameFor(model => model.ProductName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Order.Name)
+                            @Html.DisplayNameFor(model => model.Ordered.Name)
                         </th>
                       
                         <th>Actions</th>
@@ -68,7 +68,7 @@
                                 @Html.DisplayFor(modelItem => item.ProductName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Order.Name)
+                                @Html.DisplayFor(modelItem => item.Ordered.Name)
                             </td>
                             <td class="center">
                                 <a href="@Url.Action("Index", "Order")" class="btn btn-success">Back to list</a>

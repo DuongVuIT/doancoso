@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Model;
 using VuDaiDuong_8627_DoAnCoSo.Models;
 
 namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
@@ -74,9 +76,8 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         }
         public double Sales()
         {
-            double sales = db.Orders.Sum(n=>n.Total);
+            double sales = db.Ordereds.Sum(n=>n.Total);
             ViewBag.salesFormatted = string.Format("{0:#,##0} VNĐ", sales);
-
             return sales;
         }
         public int CountUser()
@@ -87,8 +88,24 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
 
         public int Orders()
         {
-            int orders = db.Orders.Count();
+            int orders = db.Ordereds.Count();
             return orders;
         }
+        public JsonResult GetOrderStatistics()
+        {
+            var query = from o in db.Ordereds
+                        group o by o.Date.Month into g
+                        select new
+                        {
+                            Month = g.Key,
+                            Count = g.Count()
+                        };
+
+            var orderStatistics = query.OrderBy(o => o.Month).ToList();
+
+            return Json(orderStatistics, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

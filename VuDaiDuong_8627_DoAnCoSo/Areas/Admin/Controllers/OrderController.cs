@@ -13,7 +13,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
       
         public ActionResult Index()
         {
-            var order = db.Orders.ToList();
+            var order = db.Ordereds.ToList();
             return View(order);
         }
         public ActionResult Details(int id)
@@ -26,12 +26,12 @@ namespace VuDaiDuong_8627_DoAnCoSo.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int ?id)
         {
-            var order = db.Orders.Where(n => n.IdOrder == id).FirstOrDefault();
+            var order = db.Ordereds.Where(n => n.IdOrder == id).FirstOrDefault();
             ViewBag.IdUser = order.Name.ToString();
             return View(order);
         }
         [HttpPost]
-        public ActionResult Edit(Order order)
+        public ActionResult Edit(Ordered order)
         {
             db.Entry(order).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
