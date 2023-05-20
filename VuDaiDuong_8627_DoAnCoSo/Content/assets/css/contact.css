@@ -1,0 +1,45 @@
+﻿.float-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+    .float-contact button {
+        display: block;
+        margin-bottom: 10px;
+        width: 190px; 
+        height: 45px; 
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+.chat-zalo {
+    background: #8eb22b;
+    border-radius: 20px;
+    padding: 0 18px;
+    color: #fff;
+    display: block;
+    margin-bottom: 6px;
+    transition: background-color 0.3s ease; /* Hiệu ứng màu nổi */
+    font-weight: bold; /* In đậm chữ */
+    text-transform: uppercase; /* Chuyển đổi thành chữ hoa */
+}
+
+.chat-face {
+    background: #125c9e;
+    border-radius: 30px;
+    padding: 0 30px;
+    color: #fff;
+    display: block;
+    margin-bottom: 6px;
+    transition: background-color 0.3s ease; /* Hiệu ứng màu nổi */
+    font-weight: bold; /* In đậm chữ */
+    text-transform: uppercase; /* Chuyển đổi thành chữ hoa */
+}
+
+    .chat-zalo:hover,
+    .chat-face:hover {
+        background: #3da854; /* Màu nổi khi hover */
+    }

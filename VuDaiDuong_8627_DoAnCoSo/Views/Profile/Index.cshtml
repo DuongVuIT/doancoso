@@ -1,36 +1,11 @@
-﻿@model VuDaiDuong_8627_DoAnCoSo.Models.Product
-@using VuDaiDuong_8627_DoAnCoSo.Models
+﻿@model VuDaiDuong_8627_DoAnCoSo.Models.User
+
 @{
-    ViewBag.Title = "DetailPro";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $("#addtocart").click(function () {
-            var model = {};
-            model.id = @Model.IdProduct;
-            model.Quantity = $("#ipQuantity").val();
-            debugger;
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("AddToCart", "Cart")',
-                data: JSON.stringify(model),
-                dataType: "Json",
-                contentType: "application/json; charset = utf-8",
-                success: function () {
-                    alert("Thên giỏ hàng thành công!")
-                    $('#CartCount').text(@Session["count"] + 1);
-                },
-                error: function () {
-                    alert("Lỗi trong khi thêm vào giỏ hàng!");
-                }
-            });
-            return false;
-        });
-    });
-</script>
 
+<!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
         <div class="circle"></div>
@@ -46,7 +21,7 @@
                     <!-- logo -->
                     <div class="site-logo">
                         <a href="index.html">
-                            <img src="assets/img/logo.png" alt="">
+                            <img src="/Content/Content/assets/img/logo.png" alt="">
                         </a>
                     </div>
                     <!-- logo -->
@@ -71,8 +46,7 @@
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="shopping-cart" href="@Url.Action("Index","Cart")"><i class="fas fa-shopping-cart"></i> <span id="CartCount">@Session["count"]</span></a>                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                     <a class="mobile-hide user-bar-icon" href="@Url.Action("Login","Home")">
                                         @if (Session["IdUser"] != null)
                                         {
@@ -139,39 +113,65 @@
     </div>
 </div>
 <!-- end breadcrumb section -->
-<div class="single-product mt-150 mb-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="single-product-img">
-                    <img src="~/Images/@Model.Image" alt="">
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="single-product-content">
-                    <h3>@Model.Name</h3>
-                    <p class="single-product-pricing"><span></span>@Model.Price.ToString("N0") VND</p>
-                    <p>@Model.Des</p>
-                    <div class="single-product-form">
-                        <form action="#">
-                            <input type="number" id="ipQuantity" placeholder="1" value="1" min="1" max="5">
-                        </form>
-                        <a href="#" id="addtocart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                        <p><strong>Thuộc dòng: </strong>@Model.Category.CategoryName</p>
-                    </div>
-                    <h4>Share:</h4>
-                    <ul class="product-share">
-                        <li><a href="https://www.facebook.com/duonghutech.dz/"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-                        <li><a href=""><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+
+<div class="max-w-md mx-auto bg-white rounded shadow-md p-4">
+    <h4 class="text-lg font-bold mb-2 text-center">Profile</h4>
+    <hr class="mb-4" />
+
+    <div class="mx-auto" style="max-width: 400px;">
+        <table class="w-full mb-4 table table-striped">
+            <tbody>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td>
+                        <input type="text" class="form-control" value="@Model.UserName"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Password</th>
+                    <td>
+                        <input type="password" class="form-control" value="@Model.PassWord"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Full Name</th>
+                    <td>
+                        <input type="text" class="form-control" value="@Model.FullName"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Phone</th>
+                    <td>
+                        <input type="text" class="form-control" value="@Model.Phone"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>
+                        <input type="email" class="form-control" value="@Model.Email"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Address</th>
+                    <td>
+                        <input type="text" class="form-control" value="@Model.Address"readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Role</th>
+                    <td>
+                        <input type="text" class="form-control" value="@Model.Role.NameRole" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="flex justify-center">
+            <a href="@Url.Action("Edit","Profile", new { id = Model.IdUser })" class=" btn btn-dark px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">Edit</a>
+            <a href="@Url.Action("Index","Home")" class="btn btn-dark px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">Back to List</a>
         </div>
     </div>
 </div>
 
-<!-- end single product -->
-<!-- more products -->
-<!-- end more products -->
+
+
