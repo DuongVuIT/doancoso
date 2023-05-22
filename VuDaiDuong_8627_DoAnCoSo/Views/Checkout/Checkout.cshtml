@@ -3,6 +3,17 @@
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    a.btn.btn-dark {
+        border-radius: 50px;
+        padding: 14px 50px;
+        background-color: black;
+        color: white;
+        display: inline-block;
+        font-family: 'Poppins';
+        margin-top: 10px;
+    }
+</style>
 <!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
@@ -139,11 +150,11 @@
                                                     <p><input type="text" name="Address" placeholder="Address"></p>
                                                     <p><input type="tel" name="Phone" placeholder="Phone"></p>
                                                     <p><textarea name="Des" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-                                                    <button type="submit" class="boxed-btn black">Place Order</button>
+                                                    <button type="submit" class="boxed-btn black">Ship Code</button>
                                                     
                                                 </form>
                                             }
-                                            <a class="btn btn-dark" href="@Url.Action("Payment","Payment")">Thanh toán</a>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +186,7 @@
                                         <td>@item.Product.Price.ToString("N0")</td>
                                     </tr>
                                 }
-
+                               
                             </tbody>
                             <tbody class="checkout-details">
                                 <tr>
@@ -194,8 +205,15 @@
                                         }
 
                                     </td>
+
                                 </tr>
+                                
                             </tbody>
+                        <tr>
+                            <td>
+                                 <a class="btn btn-dark" href="@Url.Action("Payment","Payment")">CheckOut VnPay</a>
+                            </td>
+                        </tr>
                         </table>
 
                     </div>
