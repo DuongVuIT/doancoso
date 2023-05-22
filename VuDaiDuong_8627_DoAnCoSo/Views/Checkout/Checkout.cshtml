@@ -181,10 +181,17 @@
                                 <tr>
                                     <td>Subtotal</td>
                                     <td>
+                                        @if (Session["cart"] != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                item.Total = item.Quantity * item.Product.Price;
+                                            }
 
-                                        <a class="primary-btn ">
-                                            @(Model.Sum(n => n.Quantity * n.Product.Price).ToString("N0")) VND
-                                        </a>
+                                            <a class="primary-btn ">
+                                                @(Model.Sum(n => n.Total).ToString("N0")) VND
+                                            </a>
+                                        }
 
                                     </td>
                                 </tr>
