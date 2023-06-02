@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using VuDaiDuong_8627_DoAnCoSo.Models;
@@ -22,6 +23,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             List<Cart> checkout = Session["Cart"] as List<Cart>;
             double subtotal = checkout.Sum(x=>x.Total);
             double? total = subtotal;
+            ViewBag.Total = "Tổng tiền của bạn là :"+total;
             PayLib pay = new PayLib();
 
             pay.AddRequestData("vnp_Version", "2.10.2"); //Phiên bản api mà merchant kết nối. Phiên bản hiện tại là 2.10.2
@@ -60,6 +62,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                 }
 
                 long orderId = Convert.ToInt64(pay.GetResponseData("vnp_TxnRef")); //mã hóa đơn
+
                 long vnpayTranId = Convert.ToInt64(pay.GetResponseData("vnp_TransactionNo")); //mã giao dịch tại hệ thống VNPAY
                 string vnp_ResponseCode = pay.GetResponseData("vnp_ResponseCode"); //response code: 00 - thành công, khác 00 - xem thêm https://sandbox.vnpayment.vn/apis/docs/bang-ma-loi/
                 string vnp_SecureHash = Request.QueryString["vnp_SecureHash"]; //hash của dữ liệu trả về
@@ -71,7 +74,9 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
                     if (vnp_ResponseCode == "00")
                     {
                         //Thanh toán thành công
-                        ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId + " | Mã giao dịch: " + vnpayTranId;
+                        ViewBag.Message = "Thanh toán thành công hóa đơn " + orderId 
+                            + " Mã hóa đơn: " + vnpayTranId;
+                        
                     }
                     else
                     {

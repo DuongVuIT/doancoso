@@ -205,6 +205,7 @@
     <Compile Include="VnPay\Ultil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\applelogoshortcut.png" />
     <Content Include="Areas\Admin\Content\css\bootstrap-responsive.css" />
     <Content Include="Areas\Admin\Content\css\bootstrap-responsive.min.css" />
     <Content Include="Areas\Admin\Content\css\bootstrap.css" />
@@ -411,6 +412,7 @@
     <Content Include="Content\assets\img\products\product-img-5.jpg" />
     <Content Include="Content\assets\img\products\product-img-6.jpg" />
     <Content Include="Content\assets\img\steven job.jpg" />
+    <Content Include="Content\assets\img\team\applelogoshortcut.png" />
     <Content Include="Content\assets\img\team\team-1.jpg" />
     <Content Include="Content\assets\img\team\team-2.jpg" />
     <Content Include="Content\assets\img\team\team-3.jpg" />
