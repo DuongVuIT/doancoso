@@ -38,7 +38,7 @@ a {
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out; 
-    color : black;
+    color : white;
 }
 
     a:hover {
@@ -2399,6 +2399,7 @@ ul.social-link-team {
             margin: 15px;
             border: 2px solid #051922;
             color: #323232;
+            background: black;
             cursor: pointer;
             padding: 8px 20px;
             border-radius: 25px;
