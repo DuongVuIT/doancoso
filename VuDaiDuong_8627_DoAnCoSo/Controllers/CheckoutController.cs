@@ -14,7 +14,6 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
     public class CheckoutController : Controller
     {
         DACSEntities db = new DACSEntities();
-        // GET: Checkout
         [HttpGet]
         public ActionResult Checkout()
         {
@@ -24,7 +23,7 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
         public ActionResult Checkout(string Name, string Phone, string Email, string Address, string Des)
         {
 
-
+           
             List<Cart> ck = (List<Cart>)Session["cart"];
 
             Ordered order = new Ordered();
@@ -54,7 +53,6 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             Session["Email"] = order.Email;
             Session["Address"] = order.Address;
             Session["Date"] = order.Date;
-
             db.Ordereds.Add(order);
             db.SaveChanges();
 
@@ -93,13 +91,15 @@ namespace VuDaiDuong_8627_DoAnCoSo.Controllers
             smtp.Send(mail);
            
             return RedirectToAction("CheckoutSuccess");
-          
+            
         }
 
 
         public ActionResult CheckoutSuccess()
         {
+            
             return View();
+
         }
     }
 }
